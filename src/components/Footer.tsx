@@ -1,150 +1,181 @@
-import { Heart } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaBehance,
   FaDribbble,
+  FaTwitter,
 } from "react-icons/fa";
 
 const Footer = () => {
-  const navLinks = [
+  const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/projects" },
     { name: "Blog", href: "/blog" },
-    { name: "FAQs", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ];
 
+  const services = [
+    "Logo Design",
+    "Brand Identity",
+    "Business Cards",
+    "Letterhead Design",
+    "Social Media Graphics",
+    "Web Design",
+  ];
+
+  const socialLinks = [
+    { icon: FaFacebookF, href: "https://www.facebook.com/arifulislamofficialprofile/", label: "Facebook" },
+    { icon: FaInstagram, href: "https://www.instagram.com/_md._ariful_islam/", label: "Instagram" },
+    { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/arifulcreatorstudio/", label: "LinkedIn" },
+    { icon: FaBehance, href: "https://behance.net/arifulcreatorstudio", label: "Behance" },
+    { icon: FaDribbble, href: "https://dribbble.com/arifulcreatorstudio", label: "Dribbble" },
+    { icon: FaTwitter, href: "#", label: "Twitter" },
+  ];
+
   return (
-    <footer className="relative overflow-hidden mt-12">
-      {/* Background with diagonal split and gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-indigo-800 to-rose-500 transform -skew-y-6 origin-top-left scale-110"></div>
-      
-      {/* Content */}
-      <div className="relative container mx-auto px-4 pt-32 pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
           {/* Brand Section */}
-          <div className="lg:col-span-4">
-            <a href="/" className="inline-flex items-center">
-              <span className="text-4xl font-bold">
-                <span className="text-amber-200">Ariful</span>
-                <span className="text-white ml-1">GFX</span>
-              </span>
-              <Heart className="ml-2 text-amber-200" size={32} />
-            </a>
-            <p className="text-white/90 mt-8 text-lg leading-relaxed backdrop-blur-sm">
-              I specialize in crafting unique brand identities and delivering
-              top-tier design solutions that help businesses stand out in
-              today's competitive market.
+          <div className="lg:col-span-1">
+            <div className="flex items-center mb-6">
+              <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Ariful GFX
+              </div>
+              <Heart className="ml-2 text-red-400" size={24} />
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-6">
+              Creative designer passionate about crafting unique brand identities and delivering exceptional design solutions that make businesses stand out.
             </p>
             
-            {/* Social Links */}
-            <div className="mt-8 flex flex-wrap gap-3">
-              {[
-                { icon: FaFacebookF, href: "https://www.facebook.com/arifulislamofficialprofile/", label: "Facebook" },
-                { icon: FaInstagram, href: "https://www.instagram.com/_md._ariful_islam/", label: "Instagram" },
-                { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/arifulcreatorstudio/", label: "LinkedIn" },
-                { icon: FaBehance, href: "https://behance.net/arifulcreatorstudio", label: "Behance" },
-                { icon: FaDribbble, href: "https://dribbble.com/arifulcreatorstudio", label: "Dribbble" }
-              ].map((social, index) => (
+            {/* Social Media Links */}
+            <div className="flex space-x-3">
+              {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="w-12 h-12 bg-indigo-600/50 backdrop-blur-sm rounded-xl flex items-center justify-center group transition-all duration-300 hover:bg-rose-400"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-slate-700 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5 text-white transition-transform group-hover:text-indigo-900 group-hover:scale-110" />
+                  <social.icon className="w-4 h-4 text-gray-300 group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links & Services */}
-          <div className="lg:col-span-4">
-            <h3 className="text-amber-200 text-xl font-bold mb-8">Quick Links</h3>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-white/90 hover:text-amber-200 transition-colors duration-300 group flex items-center"
-                >
-                  <span className="h-[2px] w-4 bg-indigo-400 mr-3 transition-all group-hover:w-6 group-hover:bg-amber-200"></span>
-                  {link.name}
-                </a>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group"
+                  >
+                    <ArrowRight className="w-3 h-3 mr-2 group-hover:translate-x-1 transition-transform" />
+                    {link.name}
+                  </a>
+                </li>
               ))}
-            </div>
-
-            <h3 className="text-amber-200 text-xl font-bold mt-12 mb-8">Services</h3>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-              {[
-                "Logo Design",
-                "Business Card Design",
-                "Letterhead Design",
-                "Brand Guidelines",
-                "Background Removal"
-              ].map((service, index) => (
-                <a
-                  key={index}
-                  href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="text-white/90 hover:text-amber-200 transition-colors duration-300 group flex items-center"
-                >
-                  <span className="h-[2px] w-4 bg-indigo-400 mr-3 transition-all group-hover:w-6 group-hover:bg-amber-200"></span>
-                  {service}
-                </a>
-              ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Contact & Newsletter */}
-          <div className="lg:col-span-4">
-            <h3 className="text-amber-200 text-xl font-bold mb-8">Get In Touch</h3>
-            <div className="space-y-6">
+          {/* Services */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white">Services</h3>
+            <ul className="space-y-3">
+              {services.map((service, index) => (
+                <li key={index}>
+                  <a
+                    href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group"
+                  >
+                    <ArrowRight className="w-3 h-3 mr-2 group-hover:translate-x-1 transition-transform" />
+                    {service}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white">Contact Info</h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <Mail className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                 <a
                   href="mailto:acs.arifulislam@gmail.com"
-                className="block text-white/90 hover:text-amber-200 transition-colors duration-300"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   acs.arifulislam@gmail.com
                 </a>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                 <a
                   href="tel:+8801938434733"
-                className="block text-white/90 hover:text-amber-200 transition-colors duration-300"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   +880 1938-434733
                 </a>
-              <p className="text-white/90">
-                Khulna, Bangladesh
-              </p>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
+                <span className="text-gray-300">
+                  Khulna, Bangladesh
+                </span>
+              </div>
             </div>
 
-            <div className="mt-12">
-              <h3 className="text-amber-200 text-xl font-bold mb-6">Newsletter</h3>
-              <div className="relative">
+            {/* Newsletter */}
+            <div className="mt-8">
+              <h4 className="text-lg font-medium mb-4 text-white">Newsletter</h4>
+              <div className="flex">
                 <input
                   type="email"
-                  placeholder="Enter your email"
-                  className="w-full bg-indigo-900/30 backdrop-blur-sm rounded-xl px-6 py-4 text-white placeholder:text-white/50 focus:outline-none focus:bg-indigo-800/40 transition-all pr-32"
+                  placeholder="Your email"
+                  className="flex-1 bg-slate-700 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-rose-500/80 backdrop-blur-sm text-white px-6 py-2 rounded-lg font-medium hover:bg-rose-400 transition-colors">
-                  Join
+                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg transition-colors">
+                  Subscribe
                 </button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/70">
-              Copyright © {new Date().getFullYear()} Ariful Islam. All Rights Reserved.
+      {/* Bottom Bar */}
+      <div className="border-t border-slate-700">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © {currentYear} Ariful GFX. All rights reserved.
             </p>
-            <div className="flex gap-8">
-              <a href="/privacy" className="text-white/70 hover:text-amber-200 transition-colors">Privacy Policy</a>
-              <a href="/terms" className="text-white/70 hover:text-amber-200 transition-colors">Terms of Service</a>
+            <div className="flex space-x-6 text-sm">
+              <a href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">
+                Privacy Policy
+              </a>
+              <a href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">
+                Terms of Service
+              </a>
+              <a href="/cookies" className="text-gray-400 hover:text-blue-400 transition-colors">
+                Cookie Policy
+              </a>
             </div>
           </div>
         </div>
